@@ -1,0 +1,27 @@
+<div class="app-bar">
+  <span>
+    <button class="no-border-button" (click)="GoToHome()">
+      <img class="crop-image"  Height="30" src="/assets/images/logo-2.png"/>
+    </button>
+    <!-- <div>
+      <button>hhi</button>
+      <a routerLink="/" routerLinkActive="active">dfdsf</a>
+    </div> -->
+    <!--
+      <h2>logo for brand that take to landing page when I click on it</h2>
+    -->
+  </span>
+  <span style="margin: 10px; padding: 10px;">
+    <button (click)="GoToEverydayCollection()" class="no-border-button">Everyday</button>
+    <button (click)="GoToClassicsCollection()" class="no-border-button">Classic</button>
+    <button (click)="GoToElementsCollection()" class="no-border-button">Elements</button>
+  </span>
+  <span style="float: right;">
+    <Button (click)="GoToCart()" class="no-border-button">
+      <img width="30" src="/assets/icons/cart.svg"/>
+    </Button>
+    <Button (click)="GoToProfile()"  class="no-border-button">
+      <img width="30" src="/assets/icons/profile.svg"/>
+    </Button>
+  </span>
+</div>

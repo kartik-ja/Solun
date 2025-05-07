@@ -1,0 +1,38 @@
+.content-margin {
+  margin-left: 5%;
+  margin-right: 5%;
+  margin-top: 1%;
+  margin-bottom: 1%;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  background-color: transparent;
+  /* height: 300px; */
+  /* border: 1px solid #ccc; */
+}
+.box {
+  background-color: transparent;
+  border: 1px transparent #333333;
+  margin: 0%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  border-radius: 2em;
+  overflow: hidden;
+ }
+ .image-fit-container {
+  /* width: fit-content; */
+  width: 100%;
+ }
+a {
+  text-decoration: none;
+}
+h2 {
+  color: #2D2D2D;
+}
+
+.content-margin h4 {
+  margin-top: auto;
+  align-self: flex-end; 
+  /* justify-self: right; */
+}

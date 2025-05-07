@@ -1,0 +1,19 @@
+<div class="box">
+  <a routerLink="/products/{id}">
+    <img class="image-fit-container" src="{{product.image}}" />
+  </a>
+  <div class="content-margin">
+    <a routerLink="/products/{id}">
+      <h2>
+        {{product.name}}
+      </h2>
+    </a>
+    <h3>
+      {{product.description}}
+    </h3>
+    <h4>
+      ${{product.price.toString()}}
+    </h4>
+  </div>
+</div>
+

@@ -1,1 +1,150 @@
 /* You can add global styles to this file, and also import other style files */
+/* .primary-color {
+  color: blue;
+}
+.secondary-color {
+  color: Red;
+}
+.third-color {
+  color: yellow;
+}
+.text-main {
+
+}
+.text-secondary {
+
+}
+.text-third {
+
+} */
+:root {
+  --color-bg: #FAF7F2;
+  --color-text-primary: #2D2D2D;
+  --color-text-secondary: #6B6B6B;
+  --color-accent: #D7C8B4;
+  --color-border: #E4E0DA;
+  --color-button-bg: #111111;
+  --color-button-hover: #333333;
+  --color-button-text: #FAF7F2;
+
+  --font-primary: 'Inter', sans-serif;
+
+  --fs-hero: 48px;
+  --fs-section-heading: 32px;
+  --fs-subheading: 24px;
+  --fs-body: 18px;
+  --fs-caption: 14px;
+  --fs-button: 16px;
+}
+.banner {
+  width: 100%;           /* makes it stretch full width */
+  height: auto;          /* keeps aspect ratio */
+  display: block;
+  object-fit: cover;     /* crops image to fill without distortion */
+  border-radius: 0px;   /* soft corners */
+
+}
+.app-bar {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+.product-card {
+  /* margin: 2%;
+  border: 2px solid;
+  box-sizing: border-box;
+  border-width: 30px;
+  border-color: #FF000000; */
+}
+/* .crop-image {
+  
+  margin-bottom: -10px;
+  transform: scale(3)
+} */
+.crop-image {
+  /* display: block; 
+  width: 50%;
+  height: auto;
+	overflow:hidden; */
+  /* offset-position: top; */
+  margin-bottom: -7px;
+  /* offset-position: 75%; */
+  transform: scale(3)
+}
+.no-border-button {
+  font-size: 20px;
+  background-color: transparent;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border: 0px;
+  color: #111111;;
+  margin: 10px; 
+  padding: 10px;
+}
+.no-border-button:hover {
+  color:#333333;
+  text-decoration: underline;
+}
+.left-align-element {
+  margin-left: auto;
+}
+/* === BASE STYLES === */
+body {
+  margin: 0;
+  font-family: var(--font-primary);
+  background-color: var(--color-bg);
+  color: var(--color-text-primary);
+}
+
+h1 {
+  font-size: var(--fs-hero);
+  font-weight: 600;
+}
+
+h2 {
+  font-size: var(--fs-section-heading);
+  font-weight: 600;
+}
+
+h3 {
+  font-size: var(--fs-subheading);
+  font-weight: 500;
+}
+
+
+p {
+  font-size: var(--fs-body);
+  font-weight: 400;
+  color: var(--color-text-primary);
+}
+
+.caption {
+  font-size: var(--fs-caption);
+  color: var(--color-text-secondary);
+}
+
+.button {
+  font-size: var(--fs-button);
+  font-weight: 500;
+  padding: 12px 24px;
+  background-color: var(--color-button-bg);
+  color: var(--color-button-text);
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.2s ease-in-out;
+}
+
+.button:hover {
+  background-color: var(--color-button-hover);
+}
+
+.card {
+  border: 1px solid var(--color-border);
+  border-radius: 12px;
+  padding: 24px;
+  background-color: #fff;
+}
