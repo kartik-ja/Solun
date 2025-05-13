@@ -63,7 +63,8 @@
               "browserTarget": "Solun:build:production"
             },
             "development": {
-              "browserTarget": "Solun:build:development"
+              "browserTarget": "Solun:build:development",
+              "proxyConfig": "src/proxy.conf.json"
             }
           },
           "defaultConfiguration": "development"
