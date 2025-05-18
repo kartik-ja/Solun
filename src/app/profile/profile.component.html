@@ -1,1 +1,34 @@
-<p>profile works!</p>
+<div class="two-columns">
+  <div class="column left">
+    <div class="google-social-login">
+      <asl-google-signin-button
+      type="standard"
+      size="large"
+      theme="filled_blue"
+      text="signin_with"
+      shape="rectangular"
+      logo_alignment="left"
+      width="300"
+      (click)="login()">
+      <!-- <span>Continue with Google</span> -->
+    </asl-google-signin-button>
+    </div>
+  </div>
+  <div class="column right">
+    <div class="small-margin">
+      <h1>
+        Benefits of signing in
+      </h1>
+      <div *ngFor="let benefit of signInBenefits">
+        <div class="benefit-group">
+          <h2>
+            {{benefit.title}}
+          </h2>
+          <h3>
+            {{benefit.description}}
+          </h3>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
