@@ -1,34 +1,55 @@
-<div class="two-columns">
-  <div class="column left">
-    <div class="google-social-login">
-      <asl-google-signin-button
-      type="standard"
-      size="large"
-      theme="filled_blue"
-      text="signin_with"
-      shape="rectangular"
-      logo_alignment="left"
-      width="300"
-      (click)="login()">
-      <!-- <span>Continue with Google</span> -->
-    </asl-google-signin-button>
-    </div>
+<div class="profile-container">
+  <h2>My Profile</h2>
+
+  <div class="profile-field">
+    <label>Name:</label>
+    <span>{{ user?.name }}</span>
   </div>
-  <div class="column right">
-    <div class="small-margin">
-      <h1>
-        Benefits of signing in
-      </h1>
-      <div *ngFor="let benefit of signInBenefits">
-        <div class="benefit-group">
-          <h2>
-            {{benefit.title}}
-          </h2>
-          <h3>
-            {{benefit.description}}
-          </h3>
-        </div>
+
+  <div class="profile-field">
+    <label>Email:</label>
+    <span>{{ user?.email }}</span>
+  </div>
+<button class="logout-btn" (click)="logout()">Logout</button>
+  <!-- <div class="profile-field">
+    <label>Phone Number:</label>
+    <span *ngIf="!editMode">{{ user?.number }}</span>
+    <input *ngIf="editMode"
+           type="text"
+           [(ngModel)]="editablePhone"
+           placeholder="Enter new phone number" />
+  </div> -->
+
+  <!-- <div class="actions">
+    <button *ngIf="!editMode" (click)="toggleEdit()">Edit Phone</button>
+    <div *ngIf="editMode">
+      <button (click)="savePhone()">Save</button>
+      <button (click)="cancelEdit()">Cancel</button>
+    </div>
+  </div> -->
+   <h3>My Orders</h3>
+  <div *ngIf="orders.length > 0; else noOrders">
+    <div *ngFor="let order of orders" class="order-card" (click)="goToOrderDetail(order.id)" style="cursor: pointer;">
+      <h4>Order #{{ order.id }}</h4>
+      <p><strong>Status:</strong> {{ order.status }}</p>
+      <p><strong>Total:</strong> {{ order.totalAmount }} {{ order.currency || '' }}</p>
+      <p><strong>Placed On:</strong> {{ order.createdAt | date:'medium' }}</p>
+      <p><strong>Payment:</strong> {{ order.paymentStatus }}</p>
+
+      <div *ngIf="order.watches?.length">
+        <h5>Items:</h5>
+        <ul>
+          <li *ngFor="let watch of order.watches">
+            <img [src]="watch.image" alt="{{ watch.name }}" width="50">
+            {{ watch.name }} - {{ watch.price }} {{ order.currency || '' }}
+          </li>
+        </ul>
       </div>
+
+      <hr>
     </div>
   </div>
+    <ng-template #noOrders>
+    <p>No orders found.</p>
+  </ng-template>
 </div>

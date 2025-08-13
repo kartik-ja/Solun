@@ -1,0 +1,208 @@
+.app-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 1.5rem;
+  height: 60px;
+  background-color: white;
+  border-bottom: 1px solid #e0e0e0;
+  box-sizing: border-box;
+  width: 100%;
+  margin: 0;
+  gap: 1rem;
+}
+
+/* Remove default margin/padding from body if needed */
+body {
+  margin: 0;
+}
+
+/* Style each section (left, center, right) */
+.app-bar > span,
+.search-container {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+/* Logo image fix */
+.crop-image {
+  height: 30px;
+}
+
+/* Remove button border */
+.no-border-button {
+  background: none;
+  border: none;
+  font-size: 1rem;
+  cursor: pointer;
+  color: #333;
+}
+
+.no-border-button:hover {
+  color: #007BFF;
+}
+
+/* === UPDATED search container: add position relative and min-width === */
+.search-container {
+  position: relative;     /* for absolute dropdown positioning */
+  min-width: 280px;       /* enough width for dropdown */
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+/* === UPDATED search-bar: allow flex-grow to fill container === */
+.search-bar {
+  flex-grow: 1;           /* fill available space */
+  min-width: 0;           /* prevent overflow */
+  height: 36px;
+  padding: 0 1rem;
+  font-size: 1rem;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.06);
+}
+
+.search-bar:focus {
+  outline: none;
+  border-color: #007BFF;
+  box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.15);
+}
+
+/* Search results dropdown */
+.search-results {
+  position: absolute;
+  top: 100%; /* just below input */
+  left: 0;
+  right: 0;
+  background: white;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  max-height: 240px; /* ~5 items */
+  overflow-y: auto;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+  z-index: 1000; /* on top of everything */
+}
+
+.search-item {
+  padding: 0.5rem 0.75rem;
+  cursor: pointer;
+  border-bottom: 1px solid #eee;
+}
+
+.search-item:last-child {
+  border-bottom: none;
+}
+
+.search-item:hover {
+  background-color: #f0f8ff;
+}
+
+/* Ensure right side floats correctly */
+.app-bar > span:last-child {
+  margin-left: auto;
+}
+
+/* Responsive adjustments */
+.search-wrapper {
+  position: relative;
+  width: 70vw; /* controls max width of the entire search area */
+  min-width: 280px; /* keep minimum for small screens */
+  max-width: 800px; /* optional max width */
+}
+
+/* search-container can be flex but no fixed width */
+.search-container {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  position: relative; /* for dropdown positioning */
+  width: 100%; /* fill the wrapper */
+}
+
+/* search-bar fills container */
+.search-bar {
+  flex-grow: 1;
+  min-width: 0;
+  height: 36px;
+  padding: 0 1rem;
+  font-size: 1rem;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.06);
+}
+
+/* Dropdown styling */
+.search-results {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background: white;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  max-height: 240px;
+  overflow-y: auto;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+  z-index: 1000;
+}
+
+
+.search-button {
+  height: 36px;
+  padding: 0 1rem;
+  font-size: 1rem;
+  border: none;
+  background-color: #007BFF;
+  color: white;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.search-button:hover {
+  background-color: #0056b3;
+}
+
+.search-icon-button {
+  background: none;
+  border: none;
+  font-size: 1.4rem;
+  cursor: pointer;
+  padding: 0;
+  color: #333;
+  transition: color 0.2s ease;
+  display: flex;
+  align-items: center;
+  margin-left: 1rem;
+}
+
+.search-icon-button:hover {
+  color: #007BFF;
+}
+
+.cart-button {
+  position: relative;
+  display: inline-block;
+}
+
+.cart-count {
+  position: absolute;
+  top: -6px;
+  right: -6px;
+  background: #ff3b3b;
+  color: white;
+  border-radius: 50%;
+  width: 18px;
+  height: 18px;
+  font-size: 12px;
+  font-weight: bold;
+  line-height: 18px; /* vertically center the text */
+  text-align: center;
+  box-shadow: 0 0 2px rgba(0,0,0,0.3);
+  pointer-events: none;
+  user-select: none;
+  white-space: nowrap;
+  margin-top: 3px;
+}

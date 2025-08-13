@@ -13,6 +13,7 @@ Run `ng generate component component-name` to generate a new component. You can 
 ## Build
 
 Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+ng build --configuration production
 
 ## Running unit tests
 
@@ -25,3 +26,20 @@ Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To u
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+
+Angular: 16.2.12
+## Brand Name: Solun
+🕰️ Brand Name: Solun
+(A blend of “Sol” – sun, and “Luna” – moon, representing time, balance, and beauty)
+
+
+🧡 Brand Tone:
+Warm: "reconnect with the moment", "quiet details", "cherished"
+
+Fresh: "modern simplicity", "natural elements", "everyday clarity"
+
+Simple: short, honest sentences, minimal jargon, emotional resonance
+
+## http://localhost:5101
+
+http://solun.us-west-2.elasticbeanstalk.com/

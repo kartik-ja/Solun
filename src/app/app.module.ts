@@ -14,7 +14,14 @@ import { ProductPageComponent } from './product-page/product-page.component';
 import { HttpClientModule } from '@angular/common/http';
 import { SocialLoginModule, SocialAuthServiceConfig } from '@abacritt/angularx-social-login';
 import { GoogleLoginProvider } from '@abacritt/angularx-social-login';
-const clientId :string = "308344253765-jsdb5uh256jj0hnr4osel1j0sckmaead.apps.googleusercontent.com";
+import { LoginComponent } from './login/login.component';
+import { environment } from 'src/environments/environment';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { JwtInterceptor } from './services/jwt.interceptor';
+import { OrderComponent } from './order/order.component';
+import { CheckoutComponent } from './checkout/checkout.component'
+const clientId: string = environment.googleClientId;
+// const clientId :string = "308344253765-jsdb5uh256jj0hnr4osel1j0sckmaead.apps.googleusercontent.com";
 @NgModule({
   declarations: [
     AppComponent,
@@ -24,7 +31,10 @@ const clientId :string = "308344253765-jsdb5uh256jj0hnr4osel1j0sckmaead.apps.goo
     ProductCardComponent,
     CartComponent,
     ProfileComponent,
-    ProductPageComponent
+    ProductPageComponent,
+    LoginComponent,
+    OrderComponent,
+    CheckoutComponent
   ],
   imports: [
     BrowserModule, FormsModule, AppRoutingModule, HttpClientModule, SocialLoginModule
@@ -42,6 +52,8 @@ const clientId :string = "308344253765-jsdb5uh256jj0hnr4osel1j0sckmaead.apps.goo
         ]
       } as SocialAuthServiceConfig,
     }
+    ,
+    { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true }
   ],
   bootstrap: [AppComponent]
 })

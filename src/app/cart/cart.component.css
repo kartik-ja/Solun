@@ -1,0 +1,110 @@
+:host {
+  display: block;
+  padding: 2rem;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f9f9f9;
+  min-height: 100vh;
+}
+
+h2 {
+  font-size: 2rem;
+  margin-bottom: 1.5rem;
+  color: #333;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+li {
+  background: #fff;
+  margin-bottom: 1rem;
+  padding: 1rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  display: flex;
+  align-items: center;
+  gap: 1.2rem;
+  transition: transform 0.2s ease;
+}
+
+li:hover {
+  transform: translateY(-2px);
+}
+
+img {
+  width: 60px;
+  height: 60px;
+  object-fit: cover;
+  border-radius: 8px;
+  border: 1px solid #eee;
+}
+
+button {
+  margin-left: auto;
+  padding: 0.5rem 1rem;
+  border: none;
+  background-color: #ff4d4f;
+  color: white;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+button:hover {
+  background-color: #e60000;
+}
+
+p {
+  font-size: 1.1rem;
+  color: #555;
+}
+
+.error {
+  color: #d9534f;
+  background: #ffe6e6;
+  padding: 0.75rem 1rem;
+  border-radius: 6px;
+  margin-top: 1rem;
+}
+
+@media (max-width: 600px) {
+  li {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  button {
+    margin-left: 0;
+    margin-top: 0.5rem;
+  }
+}
+.purchase-btn {
+  background-color: #28a745; /* Bootstrap green */
+  color: white;
+  border: none;
+  padding: 10px 24px;
+  font-size: 1rem;
+  font-weight: bold;
+  border-radius: 8px;
+  cursor: pointer;
+  margin-top: 1rem;
+  transition: background-color 0.3s ease;
+}
+
+.purchase-btn:hover {
+  background-color: #218838;
+}
+.purchase-btn.disabled,
+.purchase-btn:disabled {
+  background-color: #a0a0a0;  /* grey */
+  cursor: not-allowed;
+  box-shadow: none;
+  color: #f0f0f0;
+}
+
+.purchase-btn.disabled:hover,
+.purchase-btn:disabled:hover {
+  background-color: #a0a0a0;  /* no hover color change */
+}

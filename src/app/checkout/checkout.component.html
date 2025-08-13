@@ -1,0 +1,129 @@
+<div class="checkout-container">
+  <!-- Left Column - Form -->
+  <div class="checkout-form">
+    <h2>Checkout</h2>
+
+    <!-- Shipping Address -->
+    <h3>Shipping Address</h3>
+    <form #checkoutForm="ngForm">
+      <input type="text" placeholder="Full Name" [(ngModel)]="shipping.fullName" name="shippingFullName"
+        #shippingFullName="ngModel" required>
+      <div *ngIf="submitted && shippingFullName.invalid" style="color:red;font-size:0.8em;margin-top:-4px;">Required
+      </div>
+
+      <input type="text" placeholder="Address" [(ngModel)]="shipping.address" name="shippingAddress"
+        #shippingAddress="ngModel" required>
+      <div *ngIf="submitted && shippingAddress.invalid" style="color:red;font-size:0.8em;margin-top:-4px;">Required
+      </div>
+
+      <input type="text" placeholder="City" [(ngModel)]="shipping.city" name="shippingCity" #shippingCity="ngModel"
+        required>
+      <div *ngIf="submitted && shippingCity.invalid" style="color:red;font-size:0.8em;margin-top:-4px;">Required</div>
+
+      <input type="text" placeholder="Postal Code" [(ngModel)]="shipping.postalCode" name="shippingPostalCode"
+        #shippingPostalCode="ngModel" required>
+      <div *ngIf="submitted && shippingPostalCode.invalid" style="color:red;font-size:0.8em;margin-top:-4px;">Required
+      </div>
+
+      <input type="text" placeholder="Country" [(ngModel)]="shipping.country" name="shippingCountry"
+        #shippingCountry="ngModel" required>
+      <div *ngIf="submitted && shippingCountry.invalid" style="color:red;font-size:0.8em;margin-top:-4px;">Required
+      </div>
+      <!-- Billing Address -->
+      <div class="same-as-shipping">
+        <input type="checkbox" [(ngModel)]="sameAsShipping" name="sameAsShipping" id="sameAsShipping">
+        <label for="sameAsShipping">Billing address same as shipping</label>
+      </div>
+
+      <div *ngIf="!sameAsShipping">
+        <h3>Billing Address</h3>
+        <input type="text" placeholder="Full Name" [(ngModel)]="billing.fullName" name="billingFullName"
+          #billingFullName="ngModel" required>
+        <div *ngIf="submitted && billingFullName.invalid" style="color:red;font-size:0.8em;margin-top:-4px;">Required
+        </div>
+
+        <input type="text" placeholder="Address" [(ngModel)]="billing.address" name="billingAddress"
+          #billingAddress="ngModel" required>
+        <div *ngIf="submitted && billingAddress.invalid" style="color:red;font-size:0.8em;margin-top:-4px;">Required
+        </div>
+
+        <input type="text" placeholder="City" [(ngModel)]="billing.city" name="billingCity" #billingCity="ngModel"
+          required>
+        <div *ngIf="submitted && billingCity.invalid" style="color:red;font-size:0.8em;margin-top:-4px;">Required</div>
+
+        <input type="text" placeholder="Postal Code" [(ngModel)]="billing.postalCode" name="billingPostalCode"
+          #billingPostalCode="ngModel" required>
+        <div *ngIf="submitted && billingPostalCode.invalid" style="color:red;font-size:0.8em;margin-top:-4px;">Required
+        </div>
+
+        <input type="text" placeholder="Country" [(ngModel)]="billing.country" name="billingCountry"
+          #billingCountry="ngModel" required>
+        <div *ngIf="submitted && billingCountry.invalid" style="color:red;font-size:0.8em;margin-top:-4px;">Required
+        </div>
+      </div>
+
+      <!-- Payment -->
+      <h3>Payment Information</h3>
+      <select [(ngModel)]="payment.method" name="paymentMethod"
+          #paymentMethod="ngModel" required
+      >
+        <option value="" disabled>Select Payment Method</option>
+        <option value="Credit Card">Credit Card</option>
+        <option value="Debit Card">Debit Card</option>
+      </select>
+      <div *ngIf="submitted && paymentMethod.invalid" style="color:red;font-size:0.8em;margin-top:-4px;">Required</div>
+      <div *ngIf="payment.method === 'Credit Card' || payment.method === 'Debit Card'">
+        <input type="text" placeholder="Card Number" [(ngModel)]="payment.cardNumber" name="cardNumber" #cardNumber="ngModel" required>
+        <div *ngIf="submitted && cardNumber.invalid" style="color:red;font-size:0.8em;margin-top:-4px;">Required</div>
+        <input type="text" placeholder="Expiry Date (MM/YY)" [(ngModel)]="payment.expiry" name="expiry" #expiry="ngModel" required>
+        <div *ngIf="submitted && expiry.invalid" style="color:red;font-size:0.8em;margin-top:-4px;">Required</div>
+        <input type="text" placeholder="CVV" [(ngModel)]="payment.cvv" name="cvv" #cvv="ngModel" required>
+        <div *ngIf="submitted && cvv.invalid" style="color:red;font-size:0.8em;margin-top:-4px;">Required</div>
+      </div>
+
+
+      <!-- Coupon -->
+      <h3>Coupon Code</h3>
+      <div class="coupon-section">
+        <input type="text" placeholder="Enter coupon" [(ngModel)]="coupon" name="couponCode">
+        <button type="button" class="apply-btn" (click)="applyCoupon()">Apply</button>
+      </div>
+      <p [ngClass]="{ 'success-text': couponValid, 'error-text': couponValid === false }" *ngIf="discountMessage">
+        {{ discountMessage }}
+      </p>
+    </form>
+  </div>
+
+  <!-- Right Column - Summary -->
+  <div class="checkout-summary">
+    <h3>Order Summary</h3>
+    <div class="cart-items">
+      <div class="cart-item" *ngFor="let product of cart?.watches">
+        <img [src]="product.image" alt="{{product.name}}">
+        <div class="item-info">
+          <p>{{ product.name }}</p>
+          <p>{{ product.price | currency:'USD':'symbol':'1.2-2' }}</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="summary-line">
+      <span>Subtotal:</span>
+      <span>{{ getTotal() | currency:'USD':'symbol':'1.2-2' }}</span>
+    </div>
+    <div class="summary-line" *ngIf="discountAmount > 0">
+      <span>Savings:</span>
+      <span class="savings">-{{ discountAmount | currency:'USD':'symbol':'1.2-2' }}</span>
+    </div>
+    <div class="summary-line sub-item" *ngIf="true">
+      <span>Shipping:</span>
+      <span class="savings">FREE</span>
+    </div>
+    <div class="summary-line total">
+      <span>Total:</span>
+      <span>{{ getTotalAfterDiscount() | currency:'USD':'symbol':'1.2-2' }}</span>
+    </div>
+
+    <button (click)="finalizePurchase(checkoutForm)" class="purchase-btn">Complete Purchase</button>
+  </div>
+</div>

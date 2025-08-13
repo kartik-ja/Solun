@@ -1,1 +1,24 @@
-<p>cart works!</p>
+<h2>My Cart</h2>
+
+<!-- <div *ngIf="cart && cart.Watches.length > 0; else emptyCart"> -->
+<div *ngIf="cart">
+  
+  <ul>
+    <li *ngFor="let product of cart.watches">
+      <img [src]="product.image" alt="{{ product.name }}" width="60" />
+      <strong>{{ product.name }}</strong> - {{ product.price | currency }}
+
+      <button (click)="removeItem(product)">Remove</button>
+    </li>
+  </ul>
+
+  <p><strong>Total:</strong> {{ total() | currency }}</p>
+</div>
+
+<div *ngIf="!cart">
+  <p>Loading cart...</p>
+</div>
+<button class="purchase-btn" (click)="purchase()" [disabled]="!cart?.watches?.length"
+  [class.disabled]="!cart?.watches?.length">Continue to Checkout</button>
+
+<p *ngIf="errorMessage" class="error">{{ errorMessage }}</p>

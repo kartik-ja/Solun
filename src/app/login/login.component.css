@@ -1,0 +1,67 @@
+.two-columns {
+  display: flex;
+  gap: 20px; /* Optional spacing between columns */
+}
+
+.column {
+  flex: 1; /* Makes both columns take equal width */
+  padding: 10px;
+  box-sizing: border-box;
+  min-height: 50vh; /* Ensures each column is at least half the height of the viewport */
+}
+
+.left {
+  background-color: #f0f0f0; /* Optional */
+  position: relative;
+ 
+}
+
+.right {
+  background-color: #e0e0e0; /* Optional */
+}
+.small-margin{
+  margin: 20px;
+}
+.benefit-group {
+  margin: 40px 0px 40px 0px;
+}
+.google-social-login {
+  /* display: flex;
+  justify-content: center;
+  margin-top: 1rem;
+  align-items: center; */
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.google-button {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.5rem;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.2s ease, box-shadow 0.2s ease;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+.google-button-google {
+  background-color: #ffffff;
+  color: #444;
+  border: 1px solid #ccc;
+}
+
+.google-button-google:hover {
+  background-color: #f7f7f7;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+.google-button-google img {
+  width: 20px;
+  height: 20px;
+}

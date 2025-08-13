@@ -1,16 +1,35 @@
 <div>
   <img class="banner" src="https://solun-images.s3.us-west-2.amazonaws.com/assets/images/Solun-banner-2.png" alt="logo"/>
 </div>
-<span>
-  <h1>Key product card 1</h1>
-</span>
-<span>
-  <h1>Key product card 2</h1>
-</span>
-<span>
-  <h1>Key product card 3</h1>
-</span>
-<div>
-  Footer
-  Join mailing list
-</div>
+<!-- Backstory Section -->
+<section class="backstory-section">
+  <div class="backstory-content">
+    <h2>Born from a simple idea</h2>
+    <p>
+      To slow down. In a world that’s always rushing, 
+      we wanted to create timepieces that help you reconnect with the moment, with intention, with yourself.
+    </p>
+  </div>
+</section>
+<!-- Mailing List Section -->
+ <section class="new-products-section">
+  <h2>New Arrivals</h2>
+  <div class="product-grid">
+    <div class="product-card" (click)="viewProduct(product.id)" *ngFor="let product of newProducts">
+      <img [src]="product.image" [alt]="product.name" />
+      <h3>{{ product.name }}</h3>
+      <p>{{ product.description }}</p>
+      <p><strong>{{ product.price | currency }}</strong></p>
+    </div>
+  </div>
+</section>
+
+
+<section class="mailing-list-section">
+  <h2>{{subscribed ? 'Thank you for subscribing to our mailing list!' : 'Join Our Mailing List'}}</h2>
+  <p>{{subscribed ? 'You will receive the latest updates and promotions.' : 'Stay updated with exclusive promos and the latest arrivals.'}}</p>
+  <div class="mailing-form" *ngIf="!subscribed">
+    <input type="email" placeholder="Enter your email" [(ngModel)]="email" />
+    <button (click)="subscribe()">Subscribe</button>
+  </div>
+</section>

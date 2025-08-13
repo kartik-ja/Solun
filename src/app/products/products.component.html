@@ -1,5 +1,11 @@
+
 <div class="grid-container">
   <div class="grid-item" *ngFor="let product of filtedProducts">
     <app-product-card [product]="product"></app-product-card>
   </div>
 </div>
+<section class="backstory-section">
+  <div class="backstory-content">
+    <p>{{ caption }}</p>
+  </div>
+</section>

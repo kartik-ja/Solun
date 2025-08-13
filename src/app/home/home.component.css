@@ -1,0 +1,140 @@
+.mailing-list-section {
+  text-align: center;
+  padding: 2rem 1rem;
+  background: #f2f2f2;
+}
+
+.mailing-list-section h2 {
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+}
+
+.mailing-list-section p {
+  margin-bottom: 1rem;
+  color: #555;
+}
+
+.mailing-form {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.mailing-form input[type="email"] {
+  padding: 0.6rem 1rem;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  width: 300px;
+  max-width: 100%;
+}
+
+.mailing-form button {
+  padding: 0.6rem 1.2rem;
+  border: none;
+  background-color: #222;
+  color: white;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.mailing-form button:hover {
+  background-color: #555;
+}
+
+.new-products-section {
+  padding: 2rem 1rem;
+  background: white;
+}
+
+.new-products-section h2 {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1.5rem;
+}
+
+.product-card {
+  background: #fafafa;
+  border-radius: 10px;
+  padding: 1rem;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+  text-align: center;
+  transition: transform 0.2s ease;
+}
+
+.product-card:hover {
+  transform: translateY(-5px);
+}
+
+.product-card img {
+  max-width: 100%;
+  height: 180px;
+  object-fit: cover;
+  border-radius: 6px;
+  margin-bottom: 0.75rem;
+}
+
+.product-card h3 {
+  margin: 0.5rem 0;
+  font-size: 1.2rem;
+}
+
+.product-card p {
+  color: #666;
+  font-size: 0.95rem;
+}
+.banner {
+  width: 100%;
+  height: 80vh;
+  object-fit: cover;
+  object-position: bottom;
+  display: block;
+}
+.backstory-section {
+  background: #f9f7f3;
+  padding: 5rem 2rem;
+  display: flex;
+  justify-content: center;
+}
+
+.backstory-content {
+  max-width: 900px;
+  text-align: center;
+}
+
+.backstory-content h2 {
+  font-size: 2.8rem;
+  margin-bottom: 2rem;
+  font-weight: 700;
+  color: #1a1a1a;
+  letter-spacing: 0.5px;
+}
+
+.backstory-content p {
+  font-size: 1.25rem;
+  color: #333;
+  line-height: 1.9;
+  margin-bottom: 1.8rem;
+  font-weight: 300;
+}
+
+.backstory-content .highlight {
+  font-weight: 500;
+  color: #000;
+}
+
+@media (max-width: 768px) {
+  .backstory-content h2 {
+    font-size: 2.2rem;
+  }
+
+  .backstory-content p {
+    font-size: 1.1rem;
+  }
+}

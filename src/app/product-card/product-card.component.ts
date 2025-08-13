@@ -1,5 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { IProduct } from '../Inferfaces/IProduct';
+import { HttpClient, HttpParams } from '@angular/common/http';
+import { CartService } from '../services/cart.service';
 
 @Component({
   selector: 'app-product-card',
@@ -11,25 +13,17 @@ export class ProductCardComponent {
   /**
    *
    */
-  constructor() { 
-    // this.product = {
-    //   "id" : "1",
-    //   "name": "Solun Drift",
-    //   "description": "Light as air and clean as morning light. The Drift is your quiet companion — easy on the wrist, effortless with everything. Brushed steel finish with a matte ivory dial.",
-    //   "price": 149,
-    //   "image": "assets/images/Solun-3.png",
-    //   "tags": ["minimal", "daily", "brushed-steel", "neutral"],
-    //   "filters": {
-    //     "strap": "leather",
-    //     "dial_color": "ivory",
-    //     "case_material": "brushed steel",
-    //     "category": "Everyday"
-    //   },
-    //   "specs": {
-    //     "case_diameter_mm": 38,
-    //     "strap_material": "Italian leather",
-    //     "water_resistance": "3ATM"
-    //   }
-    // }
+    addedToCart = false; 
+  constructor(private http: HttpClient, private cartService: CartService) { 
+  }
+  addToCart(): void {
+    this.cartService.addToCart(this.product).subscribe({
+      next: () => {
+        this.addedToCart = true;
+        setTimeout(() => {
+          this.addedToCart = false;
+        }, 2000); // revert after 3 seconds
+      }
+    });
   }
 }

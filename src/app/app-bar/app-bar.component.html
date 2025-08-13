@@ -1,27 +1,52 @@
 <div class="app-bar">
   <span>
     <button class="no-border-button" (click)="GoToHome()">
-      <img class="crop-image"  Height="30" src="https://solun-images.s3.us-west-2.amazonaws.com/assets/images/logo-2.png"/>
+      <img class="crop-image" Height="30"
+        src="https://solun-images.s3.us-west-2.amazonaws.com/assets/images/logo-2.png" />
     </button>
-    <!-- <div>
-      <button>hhi</button>
-      <a routerLink="/" routerLinkActive="active">dfdsf</a>
-    </div> -->
-    <!--
-      <h2>logo for brand that take to landing page when I click on it</h2>
-    -->
   </span>
+
   <span style="margin: 10px; padding: 10px;">
     <button (click)="GoToEverydayCollection()" class="no-border-button">Everyday</button>
     <button (click)="GoToClassicsCollection()" class="no-border-button">Classic</button>
     <button (click)="GoToElementsCollection()" class="no-border-button">Elements</button>
   </span>
+  <div class="search-wrapper">
+    <div class="search-container">
+      <!-- (input)="onSearch()"
+    (focus)="showResults = true"
+    (blur)="onBlur()"  -->
+      <input type="text" placeholder="Search watches..." [(ngModel)]="searchTerm" class="search-bar"
+        (input)="onSearch()" />
+  
+      <button class="search-icon-button" (click)="onSearch()" aria-label="Search">
+        <!-- SVG icon -->
+        <svg xmlns="http://www.w3.org/2000/svg" height="20" width="20" viewBox="0 0 24 24" fill="none"
+          stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="11" cy="11" r="8" />
+          <line x1="21" y1="21" x2="16.65" y2="16.65" />
+        </svg>
+      </button>
+  
+      <!-- Search results dropdown -->
+      <div class="search-results" *ngIf="showResults && searchResults.length > 0" (mousedown)="$event.preventDefault()">
+        <div class="search-item" *ngFor="let item of searchResults | slice:0:5" (click)="onResultClick(item.route)">
+          <strong>{{ item.product.name }}</strong><br />
+          <small>
+            <!-- <em>{{ item.productProp }}:</em> -->
+            <span [innerHTML]="highlightMatch(item.productValue)"></span>
+          </small>
+        </div>
+      </div>
+    </div>
+  </div>
   <span style="float: right;">
-    <Button (click)="GoToCart()" class="no-border-button">
-      <img width="30" src="/assets/icons/cart.svg"/>
+    <Button (click)="GoToCart()" class="no-border-button cart-button">
+      <img width="30" src="/assets/icons/cart.svg" />
+      <span class="cart-count" *ngIf="cartItemCount > 0">{{ cartItemCount }}</span>
     </Button>
-    <Button (click)="GoToProfile()"  class="no-border-button">
-      <img width="30" src="/assets/icons/profile.svg"/>
+    <Button (click)="GoToProfile()" class="no-border-button">
+      <img width="30" src="/assets/icons/profile.svg" />
     </Button>
   </span>
 </div>

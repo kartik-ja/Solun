@@ -1,0 +1,51 @@
+<div class="order-container" *ngIf="order">
+  <h1>Order #{{ order.id }}</h1>
+  <div class="order-meta">
+    <div><strong>Order Date:</strong> {{ order.createdAt |  date:'longDate'   }}</div>
+    <div><strong>Status:</strong> <span class="status">{{ order.status }}</span></div>
+    <div><strong>Payment Status:</strong> {{ order.paymentStatus || 'N/A' }}</div>
+    <div><strong>Payment Method:</strong> {{ order.paymentMethod || 'N/A' }}</div>
+    <div><strong>Tracking Number:</strong> {{ order.trackingNumber || 'N/A' }}</div>
+    <div><strong>Currency:</strong> {{ order.currency || 'N/A' }}</div>
+    <div><strong>Total Amount:</strong> {{ order.totalAmount | currency:order.currency }}</div>
+  </div>
+
+  <section class="address-section">
+    <div>
+      <h3>Shipping Address</h3>
+      <p>{{ order.shippingAddress || 'Not provided' }}</p>
+    </div>
+    <div>
+      <h3>Billing Address</h3>
+      <p>{{ order.billingAddress || 'Not provided' }}</p>
+    </div>
+  </section>
+
+
+
+  <section class="watches-section">
+    <h2>Watches in this order</h2>
+    <div class="watch-card" *ngFor="let watch of order.watches">
+      <img [src]="watch.image" [alt]="watch.name" />
+      <div class="watch-info">
+        <h3>{{ watch.name }}</h3>
+        <p>{{ watch.description }}</p>
+        <ul>
+          <li><strong>Price:</strong> {{ watch.price | currency:order.currency }}</li>
+          <li><strong>Category:</strong> {{ watch.category }}</li>
+          <li><strong>Dial Color:</strong> {{ watch.dial_color }}</li>
+          <li><strong>Case Material:</strong> {{ watch.case_material }}</li>
+          <li><strong>Case Diameter:</strong> {{ watch.case_diameter_mm }} mm</li>
+          <li><strong>Strap Material:</strong> {{ watch.strap_material }}</li>
+          <li><strong>Water Resistance:</strong> {{ watch.water_resistance }}</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+  <section class="notes-section" *ngIf="order.notes">
+    <h3>Notes</h3>
+    <p>{{ order.notes }}</p>
+  </section>
+<div *ngIf="!order" class="loading">
+  Loading order details...
+</div>

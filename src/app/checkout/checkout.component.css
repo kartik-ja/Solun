@@ -1,0 +1,167 @@
+/* ---------- Core fixes & layout ---------- */
+* { box-sizing: border-box; }
+
+.checkout-container {
+  display: flex;
+  gap: 2rem;
+  padding: 2rem;
+  max-width: 1100px;
+  margin: 1.5rem auto;
+  flex-wrap: wrap; /* allow stacking on small screens */
+}
+
+/* allow flex children to shrink instead of forcing overflow */
+.checkout-form,
+.checkout-summary {
+  flex: 1 1 480px; /* grow, shrink, base width */
+  min-width: 0;    /* CRITICAL: prevent child overflow in flex items */
+  background: #fff;
+  border-radius: 12px;
+  padding: 1.5rem;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.06);
+}
+
+/* keep the form content from stretching to the far right */
+.checkout-form form {
+  max-width: 560px;
+  margin: 0; /* left aligned inside the card */
+}
+
+/* ---------- Inputs & spacing ---------- */
+input, select, textarea {
+  width: 100%;
+  padding: 0.75rem 0.9rem;
+  margin: 0.45rem 0;
+  border: 1px solid #e0e4ea;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  transition: box-shadow .15s, border-color .15s;
+}
+
+input:focus, select:focus, textarea:focus {
+  outline: none;
+  border-color: #2b7cff;
+  box-shadow: 0 4px 14px rgba(43,124,255,0.08);
+}
+
+/* give a little breathing room on the right so fields don't "hug" edge */
+.checkout-form { padding-right: 2rem; }
+
+/* small helper to keep grouped small fields neat */
+.card-flex {
+  display: flex;
+  gap: 1rem;
+}
+.card-flex input { flex: 1; }
+
+/* ---------- Checkbox alignment (fixed) ---------- */
+.same-as-shipping {
+  display: flex;
+  align-items: center;    /* vertically center checkbox and label */
+  gap: 0.6rem;
+  margin: 0.6rem 0 1rem 0;
+  font-size: 0.95rem;
+}
+.same-as-shipping input[type="checkbox"] {
+  width: 18px;
+  height: 18px;
+  margin: 0;              /* remove browser default offset */
+  display: inline-block;
+  transform: translateY(0.02em); /* tiny nudge so it visually centers with text */
+}
+.same-as-shipping label {
+  cursor: pointer;
+  line-height: 1;
+  margin: 0;
+}
+
+/* ---------- Cart summary and totals ---------- */
+.checkout-summary .cart-items { 
+  max-height: 420px; 
+  overflow: auto; 
+  padding-right: 0.25rem; /* avoid scrollbar overlapping content */
+}
+.cart-item {
+  display: flex;
+  align-items: center;
+  gap: 0.9rem;
+  padding: 0.5rem 0;
+  border-bottom: 1px solid #f1f3f6;
+}
+.cart-item img {
+  width: 64px;
+  height: 64px;
+  object-fit: cover;
+  border-radius: 6px;
+}
+.apply-btn {
+  background: linear-gradient(135deg, #0077ff, #005fcc);
+  color: white;
+  border: none;
+  padding: 0.6rem 1.2rem;
+  border-radius: 8px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  /* transition: background 0.3s ease; */
+  box-shadow: 0 3px 6px rgba(0, 119, 255, 0.4);
+}
+
+.apply-btn:hover {
+  background: linear-gradient(135deg, #005fcc, #004bb5);
+    box-shadow: 0 4px 10px rgba(0, 95, 204, 0.6);
+
+}
+/* totals */
+.summary-line {
+  display: flex;
+  justify-content: space-between;
+  margin: 0.5rem 0;
+  font-size: 0.98rem;
+}
+.summary-line.total {
+  border-top: 1px solid #eee;
+  padding-top: 0.6rem;
+  font-weight: 700;
+  font-size: 1.08rem;
+}
+.savings { color: #2ea44f; font-weight: 600; }
+
+/* coupon messages */
+.success-text { color: #2ea44f; font-weight: 600; margin-top: .4rem; }
+.error-text   { color: #e55353; font-weight: 600; margin-top: .4rem; }
+
+/* purchase button */
+.purchase-btn {
+  width: 100%;
+  padding: 1rem;
+  background: linear-gradient(135deg, #c69c6d, #9b6b3d);
+  color: white;
+  font-size: 1.1rem;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: all 0.25s ease;
+}
+
+.purchase-btn:hover {
+  background: linear-gradient(135deg, #9b6b3d, #7a522d);
+  transform: scale(1.02);
+}
+
+/* ---------- Responsive tweaks ---------- */
+@media (max-width: 900px) {
+  .checkout-container { padding: 1rem; gap: 1rem; }
+  .checkout-form, .checkout-summary { flex-basis: 100%; padding: 1rem; }
+  .checkout-form { padding-right: 1rem; }
+  .cart-item img { width: 56px; height: 56px; }
+}
+.sub-item {
+  font-size: 0.9em;
+  color: #28a745; /* green to highlight free */
+  /* margin-left: 10px; */
+}
+.sub-item .savings {
+  font-weight: bold;
+}

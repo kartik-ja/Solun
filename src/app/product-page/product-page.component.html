@@ -1,1 +1,69 @@
-<p>product-page works!</p>
+<div class="product-container" *ngIf="product; else loading">
+  <div class="product-image">
+    <img [src]="product.image" [alt]="product.name" />
+  </div>
+
+  <div class="product-details">
+    <h1>{{ product.name }}</h1>
+    <p class="description">{{ product.description }}</p>
+
+    <div class="product-attributes">
+      <div class="attribute">
+        <span class="label">Price:</span>
+        <span class="value">${{ product.price }}</span>
+      </div>
+      <div class="attribute">
+        <span class="label">Strap:</span>
+        <span class="value">{{ product.strap }}</span>
+      </div>
+      <div class="attribute">
+        <span class="label">Dial Color:</span>
+        <span class="value">{{ product.dial_color }}</span>
+      </div>
+      <div class="attribute">
+        <span class="label">Case Material:</span>
+        <span class="value">{{ product.case_material }}</span>
+      </div>
+      <div class="attribute">
+        <span class="label">Category:</span>
+        <span class="value">{{ product.category }}</span>
+      </div>
+      <div class="attribute">
+        <span class="label">Case Diameter:</span>
+        <span class="value">{{ product.case_diameter_mm }} mm</span>
+      </div>
+      <div class="attribute">
+        <span class="label">Strap Material:</span>
+        <span class="value">{{ product.strap_material }}</span>
+      </div>
+      <div class="attribute">
+        <span class="label">Water Resistance:</span>
+        <span class="value">{{ product.water_resistance }}</span>
+      </div>
+    </div>
+  <button (click)="addToCart(product)" 
+  class="add-to-cart-btn" 
+   [ngClass]="{'added': addedToCart}">
+   {{ addedToCart ? 'Added to Cart' : 'Add to Cart' }}
+  </button>
+  </div>
+</div>
+
+<!-- Skeleton Loader Template -->
+<ng-template #loading>
+  <div class="product-container">
+    <div class="product-image skeleton"></div>
+
+    <div class="product-details">
+      <div class="skeleton skeleton-title"></div>
+      <div class="skeleton skeleton-text"></div>
+      <div class="skeleton skeleton-text short"></div>
+
+      <div class="product-attributes">
+        <div class="skeleton skeleton-attr" *ngFor="let i of [].constructor(8)"></div>
+      </div>
+
+      <div class="skeleton skeleton-button"></div>
+    </div>
+  </div>
+</ng-template>

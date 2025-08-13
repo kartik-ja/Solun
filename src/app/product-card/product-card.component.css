@@ -1,4 +1,4 @@
-.content-margin {
+/* .content-margin {
   margin-left: 5%;
   margin-right: 5%;
   margin-top: 1%;
@@ -7,8 +7,7 @@
   flex-direction: column;
   flex: 1;
   background-color: transparent;
-  /* height: 300px; */
-  /* border: 1px solid #ccc; */
+
 }
 .box {
   background-color: transparent;
@@ -21,7 +20,6 @@
   overflow: hidden;
  }
  .image-fit-container {
-  /* width: fit-content; */
   width: 100%;
  }
 a {
@@ -34,5 +32,119 @@ h2 {
 .content-margin h4 {
   margin-top: auto;
   align-self: flex-end; 
-  /* justify-self: right; */
+}
+.add-to-cart-btn {
+  margin-left: 1rem; 
+  background-color: #1a73e8;         
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  font-size: 1rem;
+  border-radius: 8px;
+  cursor: pointer;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.25s ease, transform 0.15s ease;
+}
+
+.add-to-cart-btn:hover {
+  background-color: #1669c1;
+  transform: translateY(-2px);
+}
+
+.add-to-cart-btn:active {
+  background-color: #0f5bb5;
+  transform: translateY(0);
+} */
+.box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.06);
+  overflow: hidden;
+  max-width: 500px;
+  margin: 2rem auto;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  /* padding-top: 1rem; /* adds top spacing */
+}
+
+.box:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.1);
+}
+
+.image-fit-container {
+  width: 100%;
+  height: 400px;
+  object-fit: cover;
+  border-bottom: 1px solid #eee;
+  border-radius: 12px 12px 0 0;
+}
+
+.content-margin {
+  padding: 1.5rem;
+  text-align: center;
+}
+
+h2 {
+  font-size: 1.8rem;
+  margin-bottom: 0.5rem;
+  color: #333;
+}
+
+a {
+  text-decoration: none; /* removes underline */
+  color: inherit;         /* keeps original color */
+}
+
+h3 {
+  font-size: 1.1rem;
+  font-weight: normal;
+  color: #666;
+  margin-bottom: 1rem;
+}
+
+h4 {
+  font-size: 1.3rem;
+  color: #000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+}
+
+.add-to-cart-btn {
+  padding: 0.6rem 1.2rem;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.add-to-cart-btn:hover {
+  background-color: #0056b3;
+}
+
+@media (max-width: 600px) {
+  .image-fit-container {
+    height: 250px;
+  }
+
+  h2 {
+    font-size: 1.4rem;
+  }
+
+  h4 {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+}
+.add-to-cart-btn.added {
+  background-color: green;
+  color: white;
+  border: 1px solid #ccc;
 }

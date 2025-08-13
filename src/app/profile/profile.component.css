@@ -1,67 +1,164 @@
-.two-columns {
-  display: flex;
-  gap: 20px; /* Optional spacing between columns */
+.profile-container {
+  max-width: 800px;
+  margin: 2rem auto;
+  padding: 2rem 3rem;
+  background: #f9f9f9;
+  border-radius: 16px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: #333;
 }
 
-.column {
-  flex: 1; /* Makes both columns take equal width */
-  padding: 10px;
-  box-sizing: border-box;
-  min-height: 50vh; /* Ensures each column is at least half the height of the viewport */
+.profile-container h2 {
+  font-size: 2.4rem;
+  margin-bottom: 1.5rem;
+  border-bottom: 2px solid #1a73e8;
+  padding-bottom: 0.4rem;
+  font-weight: 700;
 }
 
-.left {
-  background-color: #f0f0f0; /* Optional */
-  position: relative;
- 
-}
-
-.right {
-  background-color: #e0e0e0; /* Optional */
-}
-.small-margin{
-  margin: 20px;
-}
-.benefit-group {
-  margin: 40px 0px 40px 0px;
-}
-.google-social-login {
-  /* display: flex;
-  justify-content: center;
-  margin-top: 1rem;
-  align-items: center; */
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-}
-
-.google-button {
+.profile-field {
   display: flex;
   align-items: center;
-  gap: 0.5rem;
-  padding: 0.75rem 1.5rem;
-  border: none;
-  border-radius: 8px;
+  margin-bottom: 1.25rem;
+}
+
+.profile-field label {
+  flex: 0 0 140px;
+  font-weight: 600;
+  color: #1a73e8;
+  font-size: 1.1rem;
+}
+
+.profile-field span,
+.profile-field input {
+  flex: 1;
   font-size: 1rem;
-  font-weight: 500;
-  cursor: pointer;
-  transition: background-color 0.2s ease, box-shadow 0.2s ease;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  padding: 0.4rem 0.6rem;
+  border-radius: 6px;
+  border: 1px solid transparent;
+  transition: border-color 0.3s ease;
 }
 
-.google-button-google {
-  background-color: #ffffff;
-  color: #444;
+.profile-field input {
   border: 1px solid #ccc;
+  outline: none;
 }
 
-.google-button-google:hover {
-  background-color: #f7f7f7;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+.profile-field input:focus {
+  border-color: #1a73e8;
+  box-shadow: 0 0 8px rgba(26,115,232,0.4);
 }
 
-.google-button-google img {
-  width: 20px;
-  height: 20px;
+.actions {
+  margin-top: 1.5rem;
+  display: flex;
+  gap: 1rem;
+}
+
+.actions button {
+  background-color: #1a73e8;
+  color: white;
+  border: none;
+  padding: 0.6rem 1.3rem;
+  font-size: 1rem;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  box-shadow: 0 4px 8px rgba(26,115,232,0.3);
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.actions button:hover {
+  background-color: #155ab6;
+  box-shadow: 0 6px 14px rgba(21,90,182,0.5);
+}
+
+.actions button:active {
+  background-color: #104a8a;
+}
+
+h3 {
+  margin-top: 3rem;
+  font-weight: 700;
+  color: #2d2d2d;
+  border-bottom: 2px solid #1a73e8;
+  padding-bottom: 0.3rem;
+  font-size: 1.8rem;
+}
+
+.order-card {
+  background: white;
+  border-radius: 12px;
+  padding: 1.4rem 2rem;
+  margin-top: 1.5rem;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.07);
+}
+
+.order-card h4 {
+  margin: 0 0 0.5rem;
+  color: #1a73e8;
+  font-weight: 700;
+}
+
+.order-card p {
+  margin: 0.2rem 0;
+  font-size: 1rem;
+  color: #444;
+}
+
+.order-card ul {
+  list-style: none;
+  padding-left: 0;
+  margin-top: 0.5rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.8rem;
+}
+
+.order-card ul li {
+  background: #f0f4ff;
+  padding: 0.5rem 0.8rem;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  max-width: 300px;
+  box-shadow: 0 1px 4px rgba(26,115,232,0.15);
+}
+
+.order-card ul li img {
+  border-radius: 6px;
+  object-fit: cover;
+  width: 48px;
+  height: 48px;
+}
+
+hr {
+  border: none;
+  border-top: 1px solid #ddd;
+  margin: 1.5rem 0 0 0;
+}
+
+ng-template p {
+  font-style: italic;
+  color: #777;
+  margin-top: 1rem;
+}
+.logout-btn {
+  background-color: #e53935;
+  color: white;
+  border: none;
+  padding: 10px 18px;
+  font-weight: 600;
+  border-radius: 6px;
+  cursor: pointer;
+  float: right;
+  margin-bottom: 1rem;
+  transition: background-color 0.3s ease;
+}
+
+.logout-btn:hover {
+  background-color: #b71c1c;
 }
