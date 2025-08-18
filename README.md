@@ -42,4 +42,4 @@ Simple: short, honest sentences, minimal jargon, emotional resonance
 
 ## http://localhost:5101
 
-http://solun.us-west-2.elasticbeanstalk.com/
+https://solun.click/
