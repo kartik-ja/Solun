@@ -1,208 +1,336 @@
+/* =======================
+   BASE APP BAR STYLES
+======================= */
 .app-bar {
   display: flex;
   align-items: center;
   justify-content: space-between;
   padding: 0 1.5rem;
   height: 60px;
-  background-color: white;
   border-bottom: 1px solid #e0e0e0;
-  box-sizing: border-box;
+  position: relative;
   width: 100%;
-  margin: 0;
+  box-sizing: border-box;
+}
+
+/* Logo */
+.logo-span {
+  display: flex;
+  align-items: center;
+}
+
+/* Desktop nav buttons */
+.desktop-nav {
+  display: flex;
   gap: 1rem;
 }
 
-/* Remove default margin/padding from body if needed */
-body {
-  margin: 0;
+/* Search wrapper */
+.search-wrapper {
+  flex: 1 1 auto;
+  margin: 0 1rem;
 }
 
-/* Style each section (left, center, right) */
-.app-bar > span,
+/* =======================
+   SEARCH CONTAINER
+======================= */
 .search-container {
+  position: relative;
+  width: 100%;
+  max-width: 400px;
   display: flex;
   align-items: center;
-  gap: 1rem;
 }
 
-/* Logo image fix */
-.crop-image {
-  height: 30px;
-}
-
-/* Remove button border */
-.no-border-button {
-  background: none;
-  border: none;
-  font-size: 1rem;
-  cursor: pointer;
-  color: #333;
-}
-
-.no-border-button:hover {
-  color: #007BFF;
-}
-
-/* === UPDATED search container: add position relative and min-width === */
-.search-container {
-  position: relative;     /* for absolute dropdown positioning */
-  min-width: 280px;       /* enough width for dropdown */
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-}
-
-/* === UPDATED search-bar: allow flex-grow to fill container === */
+/* Search Input */
 .search-bar {
-  flex-grow: 1;           /* fill available space */
-  min-width: 0;           /* prevent overflow */
-  height: 36px;
-  padding: 0 1rem;
+  width: 100%;
+  padding: 8px 45px 8px 15px; /* left 15px, right 45px for icon */
+  border-radius: 20px;
   font-size: 1rem;
-  border-radius: 6px;
   border: 1px solid #ccc;
-  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.06);
+  box-shadow: inset 0 1px 4px rgba(0,0,0,0.1);
+  transition: border 0.2s, box-shadow 0.2s;
+  box-sizing: border-box;
 }
 
 .search-bar:focus {
   outline: none;
   border-color: #007BFF;
-  box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.15);
+  box-shadow: 0 0 0 2px rgba(0,123,255,0.15) inset;
 }
 
-/* Search results dropdown */
+/* Search Icon inside input */
+.search-icon {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #888;
+  transition: color 0.2s ease;
+}
+
+.search-icon:hover {
+  color: #007BFF;
+}
+
+/* =======================
+   SEARCH RESULTS DROPDOWN
+======================= */
 .search-results {
   position: absolute;
-  top: 100%; /* just below input */
+  top: 100%; /* below input */
   left: 0;
-  right: 0;
-  background: white;
+  width: 100%; /* match input width exactly */
+  background: #fff;
+  border-radius: 12px;
   border: 1px solid #ccc;
-  border-radius: 6px;
-  max-height: 240px; /* ~5 items */
+  box-shadow: 0 8px 16px rgba(0,0,0,0.15);
+  max-height: 260px; /* limit height */
   overflow-y: auto;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.15);
-  z-index: 1000; /* on top of everything */
+  z-index: 1000;
+  margin-top: 5px;
+  padding: 0;
+  box-sizing: border-box;
+  transition: opacity 0.2s ease, transform 0.2s ease;
 }
 
+/* Each Search Item */
 .search-item {
-  padding: 0.5rem 0.75rem;
+  padding: 0.75rem 15px; /* left padding */
+  padding-right: 45px;   /* right padding to match input icon */
   cursor: pointer;
   border-bottom: 1px solid #eee;
+  display: flex;
+  flex-direction: column;
+  transition: background 0.2s, transform 0.15s ease;
+  box-sizing: border-box;
 }
 
 .search-item:last-child {
   border-bottom: none;
 }
 
+/* Hover effect */
 .search-item:hover {
-  background-color: #f0f8ff;
-}
-
-/* Ensure right side floats correctly */
-.app-bar > span:last-child {
-  margin-left: auto;
-}
-
-/* Responsive adjustments */
-.search-wrapper {
-  position: relative;
-  width: 70vw; /* controls max width of the entire search area */
-  min-width: 280px; /* keep minimum for small screens */
-  max-width: 800px; /* optional max width */
-}
-
-/* search-container can be flex but no fixed width */
-.search-container {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  position: relative; /* for dropdown positioning */
-  width: 100%; /* fill the wrapper */
-}
-
-/* search-bar fills container */
-.search-bar {
-  flex-grow: 1;
-  min-width: 0;
-  height: 36px;
-  padding: 0 1rem;
-  font-size: 1rem;
-  border-radius: 6px;
-  border: 1px solid #ccc;
-  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.06);
-}
-
-/* Dropdown styling */
-.search-results {
-  position: absolute;
-  top: 100%;
-  left: 0;
-  right: 0;
-  background: white;
-  border: 1px solid #ccc;
-  border-radius: 6px;
-  max-height: 240px;
-  overflow-y: auto;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.15);
-  z-index: 1000;
-}
-
-
-.search-button {
-  height: 36px;
-  padding: 0 1rem;
-  font-size: 1rem;
-  border: none;
   background-color: #007BFF;
-  color: white;
-  border-radius: 6px;
-  cursor: pointer;
-  transition: background-color 0.2s ease;
+  color: #fff;
+  transform: scale(1.02);
 }
 
-.search-button:hover {
-  background-color: #0056b3;
+.search-item strong {
+  font-weight: 600;
 }
 
-.search-icon-button {
-  background: none;
-  border: none;
-  font-size: 1.4rem;
-  cursor: pointer;
-  padding: 0;
-  color: #333;
-  transition: color 0.2s ease;
+.search-item small {
+  font-size: 0.85rem;
+  color: #555;
+}
+
+.search-item:hover small {
+  color: #e0e0e0;
+}
+
+/* Scrollbar styling */
+.search-results::-webkit-scrollbar {
+  width: 6px;
+}
+
+.search-results::-webkit-scrollbar-thumb {
+  background: rgba(0,0,0,0.2);
+  border-radius: 3px;
+}
+
+.search-results::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+/* =======================
+   TOP-RIGHT BUTTONS
+======================= */
+.top-right-buttons {
   display: flex;
+  gap: 1rem;
+  flex-shrink: 0;
   align-items: center;
-  margin-left: 1rem;
 }
 
-.search-icon-button:hover {
-  color: #007BFF;
-}
-
-.cart-button {
-  position: relative;
-  display: inline-block;
-}
-
+/* Cart badge */
+.cart-button { position: relative; }
 .cart-count {
   position: absolute;
   top: -6px;
   right: -6px;
   background: #ff3b3b;
-  color: white;
+  color: #fff;
   border-radius: 50%;
   width: 18px;
   height: 18px;
   font-size: 12px;
-  font-weight: bold;
-  line-height: 18px; /* vertically center the text */
+  line-height: 18px;
   text-align: center;
   box-shadow: 0 0 2px rgba(0,0,0,0.3);
-  pointer-events: none;
-  user-select: none;
-  white-space: nowrap;
-  margin-top: 3px;
+}
+
+/* =======================
+   HAMBURGER (MOBILE)
+======================= */
+.hamburger {
+  display: none;
+  background: none;
+  border: none;
+  font-size: 1.6rem;
+  cursor: pointer;
+}
+
+/* =======================
+   SIDEBAR
+======================= */
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 220px;
+  max-width: 80vw;
+  height: 100%;
+  background: linear-gradient(160deg, #ffffff, #f0f0f5);
+  box-shadow: 2px 0 15px rgba(0, 0, 0, 0.25);
+  border-top-right-radius: 12px;
+  border-bottom-right-radius: 12px;
+  transform: translateX(-100%);
+  transition: transform 0.35s cubic-bezier(0.77, 0, 0.175, 1);
+  z-index: 2000;
+  padding-top: 60px;
+  overflow-y: auto;
+}
+
+.sidebar.open {
+  transform: translateX(0);
+}
+
+.sidebar-link {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  border: none;
+  background: none;
+  padding: 1rem 1.5rem;
+  width: calc(100% - 20px);
+  font-size: 1.05rem;
+  font-weight: 500;
+  color: #333;
+  cursor: pointer;
+  transition: all 0.25s ease-in-out;
+  border-radius: 8px;
+  margin: 5px 10px;
+}
+
+.sidebar-link:hover {
+  background: #007BFF;
+  color: white;
+  transform: scale(1.03);
+}
+
+.sidebar-link svg {
+  width: 18px;
+  height: 18px;
+  fill: #555;
+  transition: fill 0.25s ease;
+}
+
+.sidebar-link:hover svg {
+  fill: #fff;
+}
+
+.sidebar .close-btn {
+  position: absolute;
+  top: 10px;
+  right: 12px;
+  font-size: 1.5rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #333;
+  transition: color 0.2s ease;
+}
+
+.sidebar .close-btn:hover {
+  color: #007BFF;
+}
+
+/* Overlay */
+.overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.5);
+  z-index: 1500;
+}
+
+/* =======================
+   DESKTOP LAYOUT
+======================= */
+@media (min-width: 601px) {
+  .app-bar {
+    flex-wrap: nowrap;
+  }
+
+  .desktop-nav {
+    margin-left: 1rem;
+  }
+
+  .search-wrapper {
+    flex: 1 1 auto;
+    margin: 0 1rem;
+  }
+
+  .top-right-buttons {
+    flex-shrink: 0;
+  }
+}
+
+/* =======================
+   MOBILE LAYOUT
+======================= */
+@media (max-width: 600px) {
+  .app-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    padding: 0.5rem 1rem;
+    height: auto;
+  }
+
+  .hamburger {
+    display: block;
+    order: 1;
+  }
+
+  .logo-span {
+    margin: 0 auto;
+    order: 2;
+    display: flex;
+    align-items: center;
+  }
+
+  .top-right-buttons {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    order: 3;
+  }
+
+  .desktop-nav {
+    display: none;
+  }
+
+  .search-wrapper {
+    order: 4;
+    width: 100%;
+    margin-top: 0.5rem;
+  }
 }

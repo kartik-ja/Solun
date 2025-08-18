@@ -21,6 +21,16 @@ export class AppBarComponent implements OnInit{
       searchResults: ISearchItem[] = [];
   showResults: boolean = false;
   products: IProduct[] = [];
+   showSidebar = false;
+
+  toggleSidebar() {
+    this.showSidebar = !this.showSidebar;
+  }
+
+  onOverlayClick() {
+    this.showSidebar = false;
+  }
+
   // @Input() router!: Router;
   GoToHome()
   {
@@ -70,6 +80,7 @@ private matchProductsByAllProperties(products: IProduct[]): ISearchItem[] {
   }
   return matches;
 }
+
 onSearch() {
   // Navigate to search results or filter existing list
   if (!this.searchTerm) {
